@@ -18,6 +18,13 @@ Dependencies an required packages can be installed using scripts from "config".
 - **launch_sim.launch.py** - File for launching robot simulation, launches *rsp.launch.py* and Gazebo.
 - **mapping_sim.launch.py** - File for simulating mapping with the robot using slam_toolbox
 - **rplidar_bot.launch.py** - File meant to be run on robot itself. Launches rplidar driver that publishes Scan msgs.
+- **launch_sim_control.launch.py** - File for launching simulation with ros2 control. For teleop driving topic /cmd_vel must be remapped to /diff_cont/cmd_vel_unstamped
+
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
+
+```
+
 
 # Serial motor demo
 Install the following package in your workspace on both dev machine and the robot:
