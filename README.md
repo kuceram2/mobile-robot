@@ -3,6 +3,16 @@
 
 # my_bot
 
+# Networking
+<b>Robot</b> <br>
+Username: user <br>
+password: qwer
+hostname: raspberrypi
+
+<b>dev machine</b> (martin-virtual) <br>
+username: martin
+passworrd: qwer
+
 # Hardware
 
 <b>The lidar and the Arduino are bound to physial usb ports on the Raspberry Pi and must be connected accordng to this diagram. </b>
@@ -98,6 +108,25 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/di
 ```
 
 6. When done creating the map, you can save it in rviz using SLAM_toolbox panel that can be added in top left corner menu.
+
+# Lidar
+Robot uses RPLidar A1.
+To get data from the lidar, use launch file.
+
+```
+ros2 launch my_bot rplidar_bot.launch.py
+```
+
+## Turn lidar motor off
+When lidar driver (launch file) is running, services are available to control the motor.
+/stop_motor
+/start_motor
+
+To stop motor call service:
+
+```
+ros2 service call /stop_motor std_srvs/srv/Empty {}
+```
 
 # Gallery
 
