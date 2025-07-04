@@ -3,7 +3,11 @@
 
 # my_bot
 
+# Hardware
 
+<b>The lidar and the Arduino are bound to physial usb ports on the Raspberry Pi and must be connected accordng to this diagram. </b>
+
+![RasPi pinout](/resource/raspi_pinout.svg)
 
 # dependencies
 Dependencies an required packages can be installed using scripts from "config".
@@ -24,6 +28,7 @@ Dependencies an required packages can be installed using scripts from "config".
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
 
 ```
+- **launch_robot.launch.py** - File for driving real robot, stars robot_state_publisher, and ros2_control diff_drive. <br> <u>This has to be run on the robot!</u>
 
 
 # Serial motor demo
@@ -41,9 +46,9 @@ The github page of the package can be found [here](https://github.com/joshnewans
 **On robot (ssh) run**
 
 ```
-ros2 run serial_motor_demo driver --ros-args -p serial_port:=<your_serial_port> -p baudrate:=57600 -p loop_rate:=30 -p encoder_cpr:=3450
+ros2 run serial_motor_demo driver --ros-args -p serial_port:=/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4:1.0 -p baudrate:=57600 -p loop_rate:=30 -p encoder_cpr:=1429
 ```
-*Note:* Set the right serial port, usually /dev/ttyACM0 or /dev/ttyUSB0
+*Note:* The name of the serial port is bound to a physical slot on the RasPi!
 
 **On dev machine**
 ```
@@ -57,7 +62,7 @@ pip3 install pyserial
 ```
 Run miniterm
 ```
-python3 -m serial.tools.miniterm /dev/ttyACM0 57600
+python3 -m serial.tools.miniterm /dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4:1.0 57600
 ```
 Set the serial port!
 
@@ -65,3 +70,37 @@ Refer to this repo for instructions [ros-arduino bridge](https://github.com/josh
 
 ## ROS - Arduino bridge
 Download arduino firmware [here](https://github.com/joshnewans/ros_arduino_bridge/tree/main) and flash it on the Arduino.
+
+
+# Mapping
+To use the robot's lidar for mapping the enviroment, follow these steps:
+
+1. On robot source the workspace and run the default launch file
+```
+source install/setup.bash
+ros2 launch my_bot launch_robot.launch.py
+```
+For it to launch successfuly, Arduino must be connected and the ROS-Arduino bridge must be flashed. More [here](#ros---arduino-bridge).
+
+2. In new terminal on robot run the RPLidar driver
+```
+ros2 launch my_bot rplidar_bot.launch.py
+```
+3. On dev machine, launch slam_toolbox
+```
+ros2 launch slam_toolbox online_async_launch.py 
+```
+4. launch ``rviz2`` and set fixed_frame to /map
+
+5. Drive the robot around using the teleop node, dont forget to remap /cmd_vel topic
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
+```
+
+6. When done creating the map, you can save it in rviz using SLAM_toolbox panel that can be added in top left corner menu.
+
+# Gallery
+
+![disasembled](/resource/disasembled_bot.jpg)
+![enviroment](/resource/enviroment.jpg)
+![first map](/resource/first_map.pgm)
