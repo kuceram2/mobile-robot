@@ -98,7 +98,7 @@ ros2 launch my_bot rplidar_bot.launch.py
 ```
 3. On dev machine, launch slam_toolbox
 ```
-ros2 launch slam_toolbox online_async_launch.py 
+ros2 launch slam_toolbox online_async_launch.py  slam_params_file:=./src/my_bot/config/mapper_params_online_async.yaml 
 ```
 4. launch ``rviz2`` and set fixed_frame to /map
 
