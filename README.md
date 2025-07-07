@@ -109,6 +109,17 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/di
 
 6. When done creating the map, you can save it in rviz using SLAM_toolbox panel that can be added in top left corner menu.
 
+![robot enviroment](resource/enviroment2.jpg)
+<b>robot enviroment</b>
+
+![generated map](resource/map.png)
+<b> generated map </b>
+
+![overlay](resource/overlay.jpg)
+<b>Enviroment and map overlayed</b>
+
+
+
 # Lidar
 Robot uses RPLidar A1.
 To get data from the lidar, use launch file.
@@ -131,5 +142,7 @@ ros2 service call /stop_motor std_srvs/srv/Empty {}
 # Gallery
 
 ![disasembled](/resource/disasembled_bot.jpg)
-![enviroment](/resource/enviroment.jpg)
+
+![enviroment](/resource/enviroment2.jpg)
+
 ![first map](/resource/first_map.pgm)
