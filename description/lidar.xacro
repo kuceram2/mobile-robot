@@ -4,13 +4,15 @@
     <joint name="laser_joint" type="fixed">
         <parent link="chassis"/>
         <child link="laser_frame"/>
-        <origin xyz="0.1 0 0.1" rpy="0 0 0"/>
+        <origin xyz="0.2 0 0.1" rpy="0 0 ${pi/2}"/>
     </joint>
 
     <link name="laser_frame">
         <visual>
             <geometry>
                 <cylinder radius="0.035" length="0.02"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+
             </geometry>
             <material name="red"/>
         </visual>
@@ -20,7 +22,7 @@
             </geometry>
         </collision>
         <xacro:inertial_cylinder mass="0.1" radius="0.035" length="0.02">
-            <origin xyz="0 0 0" rpy="0 0 -${pi/2}"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
 
@@ -36,7 +38,7 @@
             <ray>
                 <scan>
                     <horizontal>
-                        <samples>720</samples>
+                        <samples>360</samples>
                         <min_angle>-3.14</min_angle>
                         <max_angle>3.14</max_angle>
                     </horizontal>
