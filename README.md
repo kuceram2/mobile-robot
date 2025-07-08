@@ -82,7 +82,9 @@ Refer to this repo for instructions [ros-arduino bridge](https://github.com/josh
 Download arduino firmware [here](https://github.com/joshnewans/ros_arduino_bridge/tree/main) and flash it on the Arduino.
 
 
-# Mapping
+# SLAM
+
+## Mapping
 To use the robot's lidar for mapping the enviroment, follow these steps:
 
 1. On robot source the workspace and run the default launch file
@@ -107,7 +109,8 @@ ros2 launch slam_toolbox online_async_launch.py  slam_params_file:=./src/my_bot/
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
 ```
 
-6. When done creating the map, you can save it in rviz using SLAM_toolbox panel that can be added in top left corner menu.
+6. When done creating the map, you can save it in rviz using SLAM_toolbox panel that can be added in top left corner menu. Map will be saved in the directory slam toolbox is being run from.
+
 
 ![robot enviroment](resource/enviroment2.jpg)
 <b>robot enviroment</b>
@@ -117,6 +120,20 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/di
 
 ![overlay](resource/overlay.jpg)
 <b>Enviroment and map overlayed</b>
+
+## Localizing
+When we have a map created, we can load it into RViz and slam will localize the robot against it. 
+For doing that the steps are:
+
+1. in [mapper_params_online_async.yaml](config/mapper_params_online_async.yaml) change 'mode' from mapping to localisation, set 'map_file_name' to the path to the map and set 'map_start_at_dock' to true.
+
+2. Place the robot in the enviroment to the same pose where it started when creating the map.
+
+3. Launch robot as described in [mapping](#mapping), launch RViz and add the slam toolbox panel
+![image](resource/slam_toolbox_plugin.png)
+
+4. Enter the name of the map to the 'deserialize_map' field and click the button. The previously created map will be loaded and adjusted accroding to the live readings from the lidar.
+There is also an option to add new readings to the map or just use it unmodified.
 
 
 
