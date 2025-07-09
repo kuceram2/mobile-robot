@@ -5,6 +5,8 @@ sudo apt install ros-humble-slam-toolbox
 
 echo "installing Nav2"
 sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup
+sudo apt install ros-humble-twist-mux
+
 
 echo "installing image compression pkg"
 sudo apt install ros-humble-image-transport-plugins

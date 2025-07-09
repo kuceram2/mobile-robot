@@ -59,6 +59,7 @@ The github page of the package can be found [here](https://github.com/joshnewans
 ros2 run serial_motor_demo driver --ros-args -p serial_port:=/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4:1.0 -p baudrate:=57600 -p loop_rate:=30 -p encoder_cpr:=1429
 ```
 *Note:* The name of the serial port is bound to a physical slot on the RasPi!
+If using the bigger wheels, the encoder cpr = 10800
 
 **On dev machine**
 ```
