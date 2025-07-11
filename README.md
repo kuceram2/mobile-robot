@@ -2,17 +2,18 @@
 
 
 # my_bot
-Contents:
-[Networkink](#networking)
-[Hardware](#hardware)
-[Dependencies](#dependencies)
-[Launch files](#launch-files)
-[Motor control](#serial-motor-demo)
-[Manually driving the robot](#manual-control)
-[SLAM](#slam)
-[Lidar](#lidar)
-[Robot description](#robot-description)
-[Gallery](#gallery)
+Contents: <br>
+[Networkink](#networking) <br>
+[Hardware](#hardware) <br>
+[Dependencies](#dependencies) <br>
+[Launch files](#launch-files) <br>
+[Operation mode config flowchart](#operation-mode-flowchart) <br>
+[Motor control](#serial-motor-demo) <br>
+[Manually driving the robot](#manual-control) <br>
+[SLAM](#slam) <br>
+[Lidar](#lidar) <br>
+[Robot description](#robot-description) <br>
+[Gallery](#gallery) <br>
 
 
 # Networking
@@ -50,6 +51,10 @@ Dependencies an required packages can be installed using scripts from "config".
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
 
 ```
+## Operation mode flowchart
+
+![operation mode flowchart](resource/operation_mode_flowchart.svg)
+
 - **launch_robot.launch.py** - File for driving real robot, stars robot_state_publisher, and ros2_control diff_drive. <br> <u>This has to be run on the robot!</u>
 
 
