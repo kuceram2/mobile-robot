@@ -2,6 +2,18 @@
 
 
 # my_bot
+Contents:
+[Networkink](#networking)
+[Hardware](#hardware)
+[Dependencies](#dependencies)
+[Launch files](#launch-files)
+[Motor control](#serial-motor-demo)
+[Manually driving the robot](#manual-control)
+[SLAM](#slam)
+[Lidar](#lidar)
+[Robot description](#robot-description)
+[Gallery](#gallery)
+
 
 # Networking
 <b>Robot</b> <br>
@@ -22,9 +34,9 @@ passworrd: qwer
 # dependencies
 Dependencies an required packages can be installed using scripts from "config".
 
-*install_dependencies.py* should be run on dev machine.
+[install_dependencies.py](config/install_dependencies.bash) should be run on dev machine.
 
-*install_dependencies_bot.py* should be run on robot itself.
+[install_dependencies_bot.py](config/install_dependencies_bot.bash) should be run on robot itself.
 
 
 # Launch files
@@ -156,6 +168,17 @@ To stop motor call service:
 ```
 ros2 service call /stop_motor std_srvs/srv/Empty {}
 ```
+
+# Robot description
+In the "description" directory there are files describin the visual and physical properties, the main file is [robot.urdf.xacro](description/robot.urdf.xacro), in that file are included other files, that have to be chosen depending on the mode of operation. 
+
+## Simulation
+
+## Real robot
+For operating real robot using ros2 control diff drive, the 
+[ros2_control_real.xacro](description/ros2_control_real.xacro) file must be included.
+
+When testing ros2 control in simulation, [ros2_control_sim.xacro](description/ros2_control_sim.xacro) must be included **instead**.
 
 # Gallery
 
