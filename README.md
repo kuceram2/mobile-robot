@@ -153,7 +153,13 @@ For doing that the steps are:
 4. Enter the name of the map to the 'deserialize_map' field and click the button. The previously created map will be loaded and adjusted accroding to the live readings from the lidar.
 There is also an option to add new readings to the map or just use it unmodified.
 
+## Navigating
 
+To launch navigation run simulation WITH ros2_control and slam to create a map. then run  <b>navigation_launch.py</b>
+
+In RViz "set goal 2D"
+
+![costmap](resource/demo_costmap.png)
 
 # Lidar
 Robot uses RPLidar A1.
