@@ -1,5 +1,8 @@
 from setuptools import find_packages, setup
 
+import os
+from glob import glob
+
 package_name = 'ros2_tutorials'
 
 setup(
@@ -10,6 +13,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -29,6 +33,7 @@ setup(
             'add_ints_client = ros2_tutorials.client_member_function:main',
             'odom_listener = ros2_tutorials.odom_subscriber:main',
             'quat_to_euler_publisher = ros2_tutorials.quat_to_euler_publisher:main',
+            'minimal_param_node = ros2_tutorials.python_parameters_node:main',
         ],
     },
 )
