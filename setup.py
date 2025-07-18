@@ -27,6 +27,8 @@ setup(
             'obstacle_detection = ros2_tutorials.obstacle_detection:main',
             'add_ints_srv = ros2_tutorials.service_member_function:main',
             'add_ints_client = ros2_tutorials.client_member_function:main',
+            'odom_listener = ros2_tutorials.odom_subscriber:main',
+            'quat_to_euler_publisher = ros2_tutorials.quat_to_euler_publisher:main',
         ],
     },
 )
