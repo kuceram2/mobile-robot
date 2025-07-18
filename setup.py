@@ -20,11 +20,13 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = py_pubsub.publisher_member_function:main',
-            'listener = py_pubsub.subscriber_member_function:main',
-            'lidar_listener = py_pubsub.lidar_subscriber:main',
-            'cmd_vel_publisher = py_pubsub.publisher_robot_driver:main',
-            'obstacle_detection = py_pubsub.obstacle_detection:main',
+            'talker = ros2_tutorials.publisher_member_function:main',
+            'listener = ros2_tutorials.subscriber_member_function:main',
+            'lidar_listener = ros2_tutorials.lidar_subscriber:main',
+            'cmd_vel_publisher = ros2_tutorials.publisher_robot_driver:main',
+            'obstacle_detection = ros2_tutorials.obstacle_detection:main',
+            'add_ints_srv = ros2_tutorials.service_member_function:main',
+            'add_ints_client = ros2_tutorials.client_member_function:main',
         ],
     },
 )
