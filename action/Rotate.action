@@ -1,0 +1,5 @@
+float32 goal
+---
+string result
+---
+float32 feedback
