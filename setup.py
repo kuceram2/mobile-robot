@@ -34,6 +34,11 @@ setup(
             'odom_listener = ros2_tutorials.odom_subscriber:main',
             'quat_to_euler_publisher = ros2_tutorials.quat_to_euler_publisher:main',
             'minimal_param_node = ros2_tutorials.python_parameters_node:main',
+            'move_robot_action_server = ros2_tutorials.move_robot_action_server:main',
+            'move_robot_action_client = ros2_tutorials.move_robot_action_client:main',
+            'rotation_action_server = ros2_tutorials.rotation_action_server:main',
+            'rotation_action_client = ros2_tutorials.rotation_action_client:main',
+
         ],
     },
 )

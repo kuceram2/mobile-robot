@@ -16,8 +16,10 @@ class MinimalSubscriber(Node):
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
-        self.get_logger().info('Z orientation: "%s"' % msg.pose.pose.orientation.z)
-        self.get_logger().info('Z angular twist: "%s"' % msg.twist.twist.angular.z)
+        # self.get_logger().info('Z orientation: "%s"' % msg.pose.pose.orientation.z)
+        # self.get_logger().info('Z angular twist: "%s"' % msg.twist.twist.angular.z)
+        self.get_logger().info('X position: "%s"' % msg.pose.pose.position.x)
+        self.get_logger().info('Y position: "%s"' % msg.pose.pose.position.y)
 
 def main(args=None):
     rclpy.init(args=args)

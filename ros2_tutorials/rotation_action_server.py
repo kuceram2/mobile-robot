@@ -3,8 +3,12 @@ from rclpy.action import ActionServer
 from rclpy.node import Node
 from rclpy.executors import MultiThreadedExecutor
 
-from geometry_msgs.msg import Vector3
+from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Twist
+
+import math
+
+from tf_transformations import euler_from_quaternion
 
 import time
 
@@ -22,13 +26,14 @@ class RotationActionServer(Node):
             self.execute_callback)
         
         # subscriber for getting current rotation
-        self.subscription = self.create_subscription(Vector3, 'orientation_euler', self.listener_callback, 10)
+        self.subscription = self.create_subscription(Odometry, 'diff_cont/odom', self.listener_callback, 10)
         self.subscription  # prevent unused variable warning
         self.current_angle = 0.0
         self.accumulated_angle = 0.0
 
         # publisher for commanding the robot
         self.publisher_ = self.create_publisher(Twist, 'diff_cont/cmd_vel_unstamped', 10)
+        self.get_logger().info("Rotation action ready")
 
     # Update accumulated angle with wrap-around correction
     def update_continuous_angle(self, current_angle, last_angle, accumulated_angle):
@@ -45,7 +50,14 @@ class RotationActionServer(Node):
         return accumulated_angle + relative_rotation
 
     def listener_callback(self, msg):
-        self.current_angle = msg.z
+        quaternion = [msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z, msg.pose.pose.orientation.w]
+        roll_rad, pitch_rad, yaw_rad = euler_from_quaternion(quaternion)
+
+        roll_deg = math.degrees(roll_rad)
+        pitch_deg = math.degrees(pitch_rad)
+        yaw_deg = math.degrees(yaw_rad)
+
+        self.current_angle = yaw_deg
     
 
     def execute_callback(self, goal_handle):
