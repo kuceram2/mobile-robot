@@ -4,7 +4,7 @@ import rclpy
 
 import time
 import sys
-from turtlebot4_navigator import TurtleBot4Directions, TurtleBot4Navigator
+from my_turtlebot4_navigator import TurtleBot4Directions, TurtleBot4Navigator
 
 def main():
     rclpy.init()

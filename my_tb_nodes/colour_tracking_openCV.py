@@ -5,18 +5,20 @@ from cv_bridge import CvBridge
 import cv2
 import numpy as np
 from geometry_msgs.msg import Twist
+import sys
 
 class OrangeBlobDetector(Node):
     def __init__(self):
         super().__init__('orange_blob_detector')
+        namespace = sys.argv[1]
         self.subscription = self.create_subscription(
             Image,
-            '/turtlebots/chomik/oakd/rgb/preview/image_raw',
+            f'/{namespace}/oakd/rgb/preview/image_raw',
             self.listener_callback,
             10)
         self.bridge = CvBridge()
 
-        self.publisher = self.create_publisher(Twist, '/turtlebots/chomik/cmd_vel', 10)
+        self.publisher = self.create_publisher(Twist, f'/{namespace}/cmd_vel', 10)
         
         self.target_x = 0
         self.target_y = 0
@@ -29,7 +31,7 @@ class OrangeBlobDetector(Node):
         # If target is detected
         if self.target_x == -1 or self.target_y == -1:
             msg_out.linear.x = 0.0
-            msg_out.angular.z = 0.2
+            msg_out.angular.z = 0.0
         else:
             if self.target_x > 200 and self.target_x < 280: msg_out.linear.x = 0.5
             elif self.target_x < 200: msg_out.angular.z = 0.5

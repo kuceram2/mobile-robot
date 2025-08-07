@@ -1,20 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2023 Clearpath Robotics, Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
-# @author Hilary Luo (hluo@clearpathrobotics.com)
+
 import sys
 import rclpy
 
@@ -44,16 +30,16 @@ def main():
     # Prepare goal pose options
     goal_options = [
         {'name': 'Home',
-         'pose': navigator.getPoseStamped([-0.22, 0.0], TurtleBot4Directions.NORTH)},
+         'pose': navigator.getPoseStamped([-0.20, 0.0], TurtleBot4Directions.NORTH)},
 
         {'name': 'Position 1',
-         'pose': navigator.getPoseStamped([-1.04, -0.50], TurtleBot4Directions.WEST)},
+         'pose': navigator.getPoseStamped([-1.03, -0.52], TurtleBot4Directions.WEST)},
         {'name': 'Position 2',
-                'pose': navigator.getPoseStamped([0.07, 2.20], TurtleBot4Directions.EAST)},
+                'pose': navigator.getPoseStamped([0.05, 2.40], TurtleBot4Directions.WEST)},
         {'name': 'Position 3',
-                'pose': navigator.getPoseStamped([0.2, 4.07], TurtleBot4Directions.EAST)},
+                'pose': navigator.getPoseStamped([-0.57, 3.40], TurtleBot4Directions.NORTH)},
         {'name': 'Position 4',
-                'pose': navigator.getPoseStamped([-0.44, 4.87], TurtleBot4Directions.EAST)},
+                'pose': navigator.getPoseStamped([-0.1, 4.2], TurtleBot4Directions.NORTH)},
         {'name': 'Exit',
          'pose': None}
     ]
