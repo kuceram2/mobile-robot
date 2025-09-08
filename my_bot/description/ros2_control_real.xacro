@@ -7,7 +7,8 @@
             <param name="left_wheel_name">left_wheel_joint</param>
             <param name="right_wheel_name">right_wheel_joint</param>
             <param name="loop_rate">30</param>
-            <param name="device">/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4:1.0</param>
+            <!-- <param name="device">/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4:1.0</param> Use with RasPi--> 
+            <param name="device">/dev/serial/by-path/pci-0000:02:00.0-usb-0:2.1:1.0-port0</param>
             <param name="baud_rate">57600</param>
             <param name="timeout">1000</param>
             <param name="enc_counts_per_rev">10800</param>
