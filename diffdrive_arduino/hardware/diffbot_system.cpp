@@ -280,10 +280,10 @@ hardware_interface::return_type DiffDriveArduinoHardware::read(
 hardware_interface::return_type diffdrive_arduino ::DiffDriveArduinoHardware::write(
   const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
-  RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "Writing" );
+  // RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "Writing" );
 
-  RCLCPP_INFO(
-          rclcpp::get_logger("DiffDriveArduinoHardware"), "Command: %d, ", (int)hw_gpio_out_[0]);
+  // RCLCPP_INFO(
+  //         rclcpp::get_logger("DiffDriveArduinoHardware"), "Command: %d, ", (int)hw_gpio_out_[0]);
   if (!comms_.connected())
   {
     return hardware_interface::return_type::ERROR;

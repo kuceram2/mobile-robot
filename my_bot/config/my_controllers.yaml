@@ -9,6 +9,16 @@ controller_manager:
     joint_broad:
       type: joint_state_broadcaster/JointStateBroadcaster
 
+    led_controller:
+      type: forward_command_controller/ForwardCommandController
+
+led_controller:
+  ros__parameters:
+    joints:
+      - test_led1
+      - test_led2
+    interface_name: "cmd_val"
+
 diff_cont:
   ros__parameters:
 
@@ -18,8 +28,8 @@ diff_cont:
 
     left_wheel_names: ['left_wheel_joint']
     right_wheel_names: ['right_wheel_joint']
-    wheel_separation: 0.2
-    wheel_radius: 0.03
+    wheel_separation: 0.185
+    wheel_radius: 0.035
 
     use_stamped_vel: false
 

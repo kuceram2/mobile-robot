@@ -52,7 +52,7 @@
     </joint>
 
     <!-- left wheel Link -->
-    <link name="${prefix}left_wheel">
+    <!-- <link name="${prefix}left_wheel">
       <collision>
         <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
         <geometry>
@@ -84,10 +84,10 @@
       <origin xyz="0 ${base_width/2} ${z_offset}" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
       <dynamics damping="0.2"/>
-    </joint>
+    </joint> -->
 
     <!-- right wheel Link -->
-    <link name="${prefix}right_wheel">
+    <!-- <link name="${prefix}right_wheel">
       <collision>
         <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
         <geometry>
@@ -117,10 +117,10 @@
       <parent link="${prefix}base_link"/>
       <child link="${prefix}caster_frontal_wheel"/>
       <origin xyz="${base_width/2 - caster_wheel_radius} 0 ${z_offset}" rpy="0 0 0"/>
-    </joint>
+    </joint> -->
 
     <!-- caster frontal wheel Link -->
-    <link name="${prefix}caster_frontal_wheel">
+    <!-- <link name="${prefix}caster_frontal_wheel">
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -150,10 +150,10 @@
       <parent link="${prefix}base_link"/>
       <child link="${prefix}caster_rear_wheel"/>
       <origin xyz="${-base_width/2 + caster_wheel_radius} 0 ${z_offset}" rpy="0 0 0"/>
-    </joint>
+    </joint> -->
 
     <!-- caster rear wheel Link -->
-    <link name="${prefix}caster_rear_wheel">
+    <!-- <link name="${prefix}caster_rear_wheel">
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -177,7 +177,7 @@
           iyy="${caster_wheel_mass * 0.4 * (caster_wheel_radius * caster_wheel_radius)}" iyz="0.0"
           izz="${caster_wheel_mass * 0.4 * (caster_wheel_radius * caster_wheel_radius)}"/>
         </inertial>
-      </link>
+      </link> -->
 
   </xacro:macro>
 
