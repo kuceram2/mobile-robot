@@ -96,6 +96,7 @@ public:
     val_1 = std::atoi(token_1.c_str());
     val_2 = std::atoi(token_2.c_str());
   }
+
   void set_motor_values(int val_1, int val_2)
   {
     std::stringstream ss;
@@ -111,10 +112,32 @@ public:
   }
 
   void set_digital_out(int pin, int val)
+  """
+  Sends command to arduino to set digital output
+  """
   {
     std::stringstream ss;
     ss << "w " << pin << " " << val << "\r";
     send_msg(ss.str());
+  }
+
+  void read_analog_in(int pin, int &val_1)
+  {
+
+    std::stringstream ss;
+    ss << "a " << pin << "\r";
+    std::string response = send_msg(ss.str());
+    
+    std::string resp = response;
+    val_1 = std::atoi(resp);
+
+    // std::string delimiter = " ";
+    // size_t del_pos = response.find(delimiter);
+    // std::string token_1 = response.substr(0, del_pos);
+    // std::string token_2 = response.substr(del_pos + delimiter.length());
+
+    // val_1 = std::atoi(token_1.c_str());
+    // val_2 = std::atoi(token_2.c_str());
   }
 
 private:
