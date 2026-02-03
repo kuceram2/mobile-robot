@@ -19,6 +19,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/AddThreeInts.srv"
   "action/Fibonacci.action"
   "action/Rotate.action"
+  "action/Translate.action"
   "srv/SetLed.srv"
   DEPENDENCIES geometry_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
 )
