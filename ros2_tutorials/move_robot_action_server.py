@@ -26,12 +26,11 @@ class TranslationActionServer(Node):
         # subscriber for getting current rotation
         self.subscription = self.create_subscription(Odometry, 'diff_cont/odom', self.listener_callback, 10)
         self.subscription  # prevent unused variable warning
-        self.current_angle = 0.0
-        self.accumulated_angle = 0.0
+
 
         # publisher for commanding the robot
         self.publisher_ = self.create_publisher(Twist, 'diff_cont/cmd_vel_unstamped', 10)
-        self.get_logger().info("Rotation action ready")
+        self.get_logger().info("Translation action ready")
 
 
     def listener_callback(self, msg):
@@ -52,7 +51,7 @@ class TranslationActionServer(Node):
             direction = 1 if desired_dist > 0 else -1
 
 
-            cmd_msg.linear.x = 0.3 * direction
+            cmd_msg.linear.x = 0.2 * direction
             self.publisher_.publish(cmd_msg)
 
             if(math.sqrt((x_delta * x_delta) + (y_delta * y_delta)) >= abs(desired_dist)):

@@ -79,7 +79,7 @@ class RotationActionServer(Node):
 
             cmd_msg.angular.z = 0.2 * direction
             self.publisher_.publish(cmd_msg)
-            time.sleep(0.1)
+            time.sleep(0.05)
 
             if (desired_rotation > 0 and self.accumulated_angle >= target_angle) or \
             (desired_rotation < 0 and self.accumulated_angle <= target_angle):
